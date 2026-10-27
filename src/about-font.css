@@ -1,0 +1,24 @@
+/* 霞鹜文楷 v1.530 的关于页子集。SIL Open Font License 1.1。
+   只包含这一页实际出现的字，完整字体不进入网页包。 */
+@font-face {
+  font-family: "LXGW WenKai About";
+  src: url("./fonts/lxgw-wenkai-about.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E, U+2010-2015, U+3000-303F, U+3040-30FF, U+4E00-9FFF, U+FF00-FFEF;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  animateMotion { display: none; }
+}
+
+/* Google Sans Flex，SIL OFL 1.1。只保留大标题 Stella 六个字母。 */
+@font-face {
+  font-family: "Stella Title";
+  src: url("./fonts/google-sans-stella.woff2") format("woff2");
+  font-weight: 560;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0041-007A;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "stella-webui",
+  "description": "Stella —— Astral（舞萌DX 协议工具集）的 Web 控制台前端",
+  "private": true,
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "fonts": "python scripts/subset-ui-font.py && python scripts/subset-about-font.py && python scripts/write-ui-font-css.py",
+    "dev": "python scripts/subset-ui-font.py && python scripts/subset-about-font.py && python scripts/write-ui-font-css.py && vite",
+    "build": "python scripts/subset-ui-font.py && python scripts/subset-about-font.py && python scripts/write-ui-font-css.py && vite build",
+    "preview": "vite preview",
+    "mock": "node mock/server.mjs"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.8",
+    "@mui/material": "^6.4.8",
+    "@mui/x-data-grid": "^7.26.0",
+    "jsqr": "^1.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^29.1.1",
+    "vite": "^5.4.11"
+  }
+}

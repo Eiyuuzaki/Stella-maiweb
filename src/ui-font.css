@@ -1,0 +1,762 @@
+/* 主站字体。Google Sans Flex 负责拉丁字符，Noto Sans SC 按 Unicode 区段分片。
+   浏览器只下载页面实际用到的片段。两套字体都使用 SIL OFL 1.1。 */
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/google-sans-ui.woff2") format("woff2");
+  font-weight: 400 560;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E, U+00A0-00FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/arrows-c.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2900-297F;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/circled.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2460-24FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/compat.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3200-32FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/cyrillic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0400-04FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/fullwidth.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+FF00-FFEF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/genpunct.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2010-2044;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/greek.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0370-03FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/kana.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3040-30FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/letterlike.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2100-21FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/math.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2200-22FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/punct.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3000-303F;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/shapes.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+25A0-25FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/symbols.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2600-27BF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u4e00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-4EFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u4f00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4F00-4FFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5000.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5000-50FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5100.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5100-51FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5200.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5200-52FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5300.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5300-53FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5400-54FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5500.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5500-55FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5600.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5600-56FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5700.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5700-57FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5800.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5800-58FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5900.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5900-59FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5a00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5A00-5AFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5b00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5B00-5BFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5c00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5C00-5CFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5d00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5D00-5DFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5e00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5E00-5EFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u5f00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+5F00-5FFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6000.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6000-60FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6100.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6100-61FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6200.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6200-62FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6300.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6300-63FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6400-64FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6500.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6500-65FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6600.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6600-66FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6700.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6700-67FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6800.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6800-68FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6900.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6900-69FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6a00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6A00-6AFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6b00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6B00-6BFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6c00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6C00-6CFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6d00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6D00-6DFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6e00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6E00-6EFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u6f00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+6F00-6FFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7000.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7000-70FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7100.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7100-71FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7200.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7200-72FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7300.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7300-73FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7400-74FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7500.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7500-75FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7600.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7600-76FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7700.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7700-77FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7800.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7800-78FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7900.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7900-79FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7a00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7A00-7AFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7b00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7B00-7BFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7c00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7C00-7CFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7d00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7D00-7DFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7e00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7E00-7EFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u7f00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+7F00-7FFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8000.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8000-80FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8100.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8100-81FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8200.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8200-82FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8300.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8300-83FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8400-84FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8500.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8500-85FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8600.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8600-86FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8700.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8700-87FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8800.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8800-88FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8900.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8900-89FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8a00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8A00-8AFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8b00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8B00-8BFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8c00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8C00-8CFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8d00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8D00-8DFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8e00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8E00-8EFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u8f00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+8F00-8FFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9000.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9000-90FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9100.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9100-91FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9200.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9200-92FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9300.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9300-93FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9400-94FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9500.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9500-95FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9600.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9600-96FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9700.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9700-97FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9800.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9800-98FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9900.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9900-99FF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9a00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9A00-9AFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9b00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9B00-9BFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9c00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9C00-9CFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9e00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9E00-9EFF;
+}
+@font-face {
+  font-family: "Stella UI";
+  src: url("./fonts/noto/u9f00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+9F00-9FFF;
+}
