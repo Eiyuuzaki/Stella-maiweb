@@ -73,16 +73,16 @@ function rankFromAchievement(pct) {
   if (pct >= 60) return 1       // C
   return 0                      // D
 }
-// DX 星级：dx_score / (3 × total_notes)，满分 5 星（查分器 dx_star max=5）
-// 档位边界按查分器展示惯例：≥0.97→5星 0.94→4星 0.88→3星 0.80→2星 0.50→1星
+// DX 星级：dx_score / (3 × total_notes)，满分 5 星
+// 实测档位（2026-10-28）：≥0.97→5星 0.95→4星 0.93→3星 0.90→2星 0.85→1星
 function starsFromDx(dx, totalNotes) {
   if (!totalNotes) return 0
   const ratio = dx / (3 * totalNotes)
   if (ratio >= 0.97) return 5
-  if (ratio >= 0.94) return 4
-  if (ratio >= 0.88) return 3
-  if (ratio >= 0.80) return 2
-  if (ratio >= 0.50) return 1
+  if (ratio >= 0.95) return 4
+  if (ratio >= 0.93) return 3
+  if (ratio >= 0.90) return 2
+  if (ratio >= 0.85) return 1
   return 0
 }
 
@@ -166,6 +166,7 @@ export default function UpsertPage() {
   const [deriveResult, setDeriveResult] = React.useState(null)
   const [deriving, setDeriving] = React.useState(false)
   const [autoDerive, setAutoDerive] = React.useState(true)
+  const [overwriteScores, setOverwriteScores] = React.useState(false)
   const [chartTitle, setChartTitle] = React.useState('')
 
   // 歌曲或难度一变就取真实物量。查不到就保留手填值，不打断输入。
@@ -262,15 +263,24 @@ export default function UpsertPage() {
   //   （2026-10-26 实跑日志已证实该 bug）。
   React.useEffect(() => {
     if (achvPct === '' || !Number.isFinite(achvPct)) return
+    const clear = achvPct === 0
     setForm((f) => ({
       ...f,
       score_rank: rankFromAchievement(achvPct),
       is_clear: achvPct >= 80,
-      // DX 分：星级优先（选了星级就用星级推导值），否则保持原值/估 97%
-      deluxscore: simpleStars !== 'any'
-        ? dxFromStars
-        : (f.deluxscore || dxFromStars),
+      // 伪清除：评级/连击/DX 分全部归零
+      combo_status: clear ? 0 : f.combo_status,
+      max_combo: clear ? 0 : f.max_combo,
+      deluxscore: clear ? 0
+        : (simpleStars !== 'any' ? dxFromStars : (f.deluxscore || dxFromStars)),
     }))
+    if (clear && totalNotes > 0) {
+      // 判定矩阵全部置 Miss（每类 Miss = 该类物量，总数守恒）
+      setJudge((j) => Object.fromEntries(Object.entries(j).map(([name, row]) => [
+        name,
+        { ...row, CriticalPerfect: 0, Perfect: 0, Great: 0, Good: 0, Miss: countsNum[name] },
+      ])))
+    }
   }, [achvPct, totalNotes, simpleStars])
 
   function deriveBlockReason(pct) {
@@ -287,6 +297,9 @@ export default function UpsertPage() {
 
   async function deriveDistribution({ silent = false } = {}) {
     const pct = achvPct
+    // 伪清除（达成率 0）不需要求解器：全 Miss 的判定矩阵已由联动直接置好，
+    // 打 target=0 进求解器既浪费也没有可靠解
+    if (Number(pct) === 0) return
     const reason = deriveBlockReason(pct)
     if (reason) {
       if (!silent) notify('error', reason)
@@ -557,6 +570,7 @@ export default function UpsertPage() {
           extra_data: extraData,
           confirm: send,
           verify_landing: verify,
+          overwrite_scores: overwriteScores,
           cooldown_sec: cooldown === '' ? null : Number(cooldown),
         }),
       {
@@ -726,6 +740,20 @@ export default function UpsertPage() {
           </Button>
           <Toggle label="上传后落库回查" checked={verify} onChange={setVerify}
             hint="发包后重新拉服务器数据，确认真的写进去了。returnCode=1 不代表数据被应用。" />
+          <Toggle label="覆盖模式" checked={overwriteScores} onChange={setOverwriteScores}
+            hint="允许把已有成绩改低（达成率填 0 = 伪清除：记录仍在、数值归零）。默认关闭 —— 关闭时低于已有的成绩会被忽略。" />
+          <Button
+            variant="outlined" color="warning" size="small"
+            disabled={busy || readOnly}
+            onClick={() => {
+              setAchvPct(0)
+              setOverwriteScores(true)
+              notify('info', '已切换为伪清除：达成率 0，上传后这首会变成 0.0000% D')
+            }}
+            sx={{ alignSelf: 'flex-start' }}
+          >
+            一键伪清除（达成率置 0）
+          </Button>
         </Stack>
 
 

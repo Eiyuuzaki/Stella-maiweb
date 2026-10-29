@@ -1,14 +1,15 @@
-// DX 星级按 DX 分 / (3×物量) 分档。每一档都取闭区间，
-// 上限停在下一档之前，避免四星被写成五星理论值。
-const LOWER = { 5: 0.97, 4: 0.94, 3: 0.88, 2: 0.80, 1: 0.50, 0: 0 }
+// DX 星级按 DX 分 / (3×物量) 分档（用户实测校准 2026-10-28）：
+// 0★ <85% · 1★ 85-89.99 · 2★ 90-92.99 · 3★ 93-94.99 · 4★ 95-96.99 · 5★ 97-100
+const LOWER = { 5: 0.97, 4: 0.95, 3: 0.93, 2: 0.90, 1: 0.85, 0: 0 }
 
 export function starBounds(star, totalNotes) {
   const theory = Math.max(0, Number(totalNotes) || 0) * 3
   const level = Number(star)
   const lowerRatio = LOWER[level] ?? 0.97
-  const upperRatio = { 4: 0.97, 3: 0.94, 2: 0.88, 1: 0.80, 0: 0.50 }[level]
+  const upperRatio = { 4: 0.97, 3: 0.95, 2: 0.93, 1: 0.90, 0: 0.85 }[level]
   const min = Math.ceil(theory * lowerRatio)
-  const max = upperRatio == null ? Math.max(min, theory - 1) : Math.max(min, Math.ceil(theory * upperRatio) - 1)
+  // 5★ 区间含 DX 理论值（3×物量 = 全 Critical Perfect）
+  const max = upperRatio == null ? theory : Math.max(min, Math.ceil(theory * upperRatio) - 1)
   return { min, max, theory }
 }
 
