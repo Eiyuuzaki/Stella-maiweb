@@ -107,7 +107,7 @@ export const api = {
   continueLogin: () => req('/login', { method: 'POST', body: { qr: '', pull_snapshot: false, is_continue: true } }),
 
   upsert: (payload) => req('/upsert', { method: 'POST', body: payload }),
-  verifyPlays: (plays) => req('/upsert/verify', { method: 'POST', body: { plays } }),
+  verifyPlays: (plays, userId) => req('/upsert/verify', { method: 'POST', body: { plays, user_id: userId || 0 } }),
   batchProgress: () => req('/batch/progress'),
   updateBatchProgress: (progress) => req('/batch/progress', { method: 'POST', body: progress }),
   unlock: (payload) => req('/unlock', { method: 'POST', body: payload }),

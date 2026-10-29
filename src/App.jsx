@@ -59,10 +59,28 @@ function Shell() {
 
   React.useEffect(() => {
     let stop = false
-    const load = () => api.batchProgress().then((out) => { if (!stop) setBatchProgress(out.progress) }).catch(() => {})
+    let hideTimer = null
+    let hiddenSig = null
+    const load = () => api.batchProgress().then((out) => {
+      if (stop) return
+      const p = out.progress
+      const sig = JSON.stringify([p.running, p.done, p.total, p.message])
+      // 完成态已自动隐藏过且内容没变 → 不再显示；新任务（running 或新内容）才恢复
+      if (!p.running && sig === hiddenSig) return
+      if (!stop) setBatchProgress(p)
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null }
+      if (p.running) { hiddenSig = null; return }
+      if (p.total > 0) {
+        hiddenSig = sig
+        hideTimer = setTimeout(() => {
+          hideTimer = null
+          if (!stop) setBatchProgress(null)
+        }, 60000)
+      }
+    }).catch(() => {})
     load()
     const timer = setInterval(load, 3000)
-    return () => { stop = true; clearInterval(timer) }
+    return () => { stop = true; clearInterval(timer); if (hideTimer) clearTimeout(hideTimer) }
   }, [])
 
   const current = PAGES.find((p) => p.key === page) || PAGES[0]
