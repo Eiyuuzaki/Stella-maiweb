@@ -22,11 +22,18 @@ function ownedItems(snapshot) {
   ))
 }
 
+function allItems(snapshot) {
+  const raw = snapshot?.userItemList
+  const rows = raw?.userItemList || raw || []
+  return Array.isArray(rows) ? rows.filter((item) => KINDS.some(([kind]) => kind === Number(item.itemKind))) : []
+}
+
 export default function CollectionPage() {
   const { session, act, busy, notify } = useApp()
   const [kind, setKind] = React.useState(3)
   const [itemId, setItemId] = React.useState('')
   const [items, setItems] = React.useState([])
+  const [allRows, setAllRows] = React.useState([])
   const [result, setResult] = React.useState(null)
   const [confirm, setConfirm] = React.useState(null)
   const loggedIn = !!session?.logged_in
@@ -34,7 +41,10 @@ export default function CollectionPage() {
   async function reload() {
     if (!loggedIn) return
     const out = await act(() => api.snapshot(), { refresh: false })
-    if (out?.result?.nodes) setItems(ownedItems(out.result.nodes))
+    if (out?.result?.nodes) {
+      setItems(ownedItems(out.result.nodes))
+      setAllRows(allItems(out.result.nodes))
+    }
   }
 
   React.useEffect(() => { reload() }, [loggedIn])
@@ -42,10 +52,21 @@ export default function CollectionPage() {
   async function submit(send, action = 'grant') {
     const id = Number(itemId)
     if (!id) return notify('error', '先填写收藏品编号')
-    const exists = items.some((item) => Number(item.itemKind) === kind && Number(item.itemId) === id)
+    // isNew 判断要用全量列表（含 stock=0 的伪删除行）——
+    // 只看已拥有的会导致伪删除后再发放时误发新增，服务端对重复主键会 500
+    const exists = allRows.some((item) => Number(item.itemKind) === kind && Number(item.itemId) === id)
     const stock = action === 'remove' ? 0 : 1
+    const zeroJudge = { CriticalPerfect: 0, Perfect: 0, Great: 0, Good: 0, Miss: 0 }
     const out = await act(() => api.upsert({
-      play: { music_id: 1, music_level: 0 },
+      // 占位 play 必须全零：组包会为它生成一条曲目明细，
+      // 不显式清零的话 achievement/DX 会走 config 默认值（101%），凭空多出一条假成绩
+      play: {
+        music_id: 1, music_level: 0,
+        achievement: 0, deluxscore: 0,
+        combo_status: 0, sync_status: 0,
+        max_combo: 0, total_combo: 0, max_sync: 0, total_sync: 0,
+        judge_counts: { tap: zeroJudge, hold: zeroJudge, slide: zeroJudge, touch: zeroJudge, break: zeroJudge },
+      },
       extra_data: {
         userItemList: [{ itemKind: kind, itemId: id, stock, isValid: true }],
         isNewItemList: exists ? '0' : '1',
